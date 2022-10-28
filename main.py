@@ -11,6 +11,7 @@ BLACK = (0, 0, 0)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
+player = pygame.image.load()
 
 while True:
     for event in pygame.event.get():
