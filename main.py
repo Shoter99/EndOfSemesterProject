@@ -36,12 +36,9 @@ class Player:
     def rotate(self, deg : float):
         pygame.transform.rotate(self.player_img, deg)
     
-    def get_x(self):
-        return self.x
+    def get_location(self):
+        return self.x, self.y
     
-    def get_y(self):
-        return self.y
-
     def input(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_a]:
@@ -53,7 +50,16 @@ class Player:
         if keys[pygame.K_s]:
             player.move(0, 1)
 
+    def shoot(self):
+        pass
 
+    class Bullet:
+        def __init__(self, pos, direction):
+            self.pos = pos
+            self.direction = direction
+        
+        def move(self, x : int, y : int):
+            pass
 
 player = Player("Assets/Player.png", (WIDTH/2-32, HEIGHT/2-32), screen)
 
