@@ -30,9 +30,30 @@ class Player:
     def show_on_screen(self):
         self.screen.blit(self.player_img, (self.x, self.y))
 
-    def move(self, x, y):
+    def move(self, x : int , y : int):
         self.x += self.moveSpeed * x
         self.y += self.moveSpeed * y
+
+    def rotate(self, deg : float):
+        pygame.transform.rotate(self.player_img, deg)
+    
+    def get_x(self):
+        return self.x
+    
+    def get_y(self):
+        return self.y
+
+    def input(self):
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_a]:
+            player.move(-1, 0)
+        if keys[pygame.K_d]:
+            player.move(1, 0)
+        if keys[pygame.K_w]:
+            player.move(0, -1)
+        if keys[pygame.K_s]:
+            player.move(0, 1)
+
 
 
 player = Player("Assets/Player.png", WIDTH/2-32, HEIGHT/2-32, screen)
@@ -44,15 +65,7 @@ while running:
         if event.type == pygame.QUIT:
             sys.exit()
 
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_a]:
-        player.move(-1, 0)
-    if keys[pygame.K_d]:
-        player.move(1, 0)
-    if keys[pygame.K_w]:
-        player.move(0, -1)
-    if keys[pygame.K_s]:
-        player.move(0, 1)
+    player.input()
 
     screen.fill(BLACK)
     player.show_on_screen()
