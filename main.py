@@ -17,10 +17,9 @@ FPS = 60
 
 
 class Player:
-    def __init__(self, path_to_img, x, y, screen):
+    def __init__(self, path_to_img, pos, screen):
         self.path_to_img = path_to_img
-        self.x = x
-        self.y = y
+        self.x, self.y = pos
         self.screen = screen
         self.player_img = pygame.transform.scale2x(
             pygame.image.load(self.path_to_img))
@@ -56,7 +55,7 @@ class Player:
 
 
 
-player = Player("Assets/Player.png", WIDTH/2-32, HEIGHT/2-32, screen)
+player = Player("Assets/Player.png", (WIDTH/2-32, HEIGHT/2-32), screen)
 
 running = True
 
